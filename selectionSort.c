@@ -7,6 +7,7 @@ int main(){
 	for(i=0;i<n;i++){
 		printf("Enter element no. %d : ",i+1);
 		scanf("%d",&array[i]);
+		count++;
 	}
 	count++;
 	for(i=0;i<n;i++){
@@ -19,7 +20,7 @@ int main(){
 			}
 		count++;	
 		}
-		
+		count++;
 		if(i!=min){
 			temp=array[i];
 			array[i]=array[min];
