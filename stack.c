@@ -2,40 +2,46 @@
 #include<stdlib.h>
 #define MAX 30
 int top=-1;
-int count=1;
 
 void push(int st[],int item){
 	if(top==MAX-1){
 		printf("The stack is full\n");
 		return;
 	}
-	st[++top]=item;
-	count++;
+	top++;
+	st[top]=item;
+	
 }
 void pop(int st[]){
 	if(top==-1){
 		printf("The stack is empty\n");
 		return;
 	}
-	printf("The element deleted is %d",st[top--]);
+	printf("The element deleted is %d\n",st[top]);
+	top--;
 }
 void display(int st[]){
 	printf("\n");
-	for(int i=0;i<=top;i++){
-		printf("%d  ",st[i]);
-		count++;
+	if (top==-1){
+		printf("Stack is Empty\n");
 	}
-	printf("\n\n");
+	else {
+		printf("The stack is : ");
+		for(int i=0;i<=top;i++){
+			printf("%d  ",st[i]);
+		}
+		printf("\n");
+	}
 }
 
 
 int main(){
 	int stack[MAX],n;
-	char y='y';
-	count++;
 	while(1){
 		printf("Enter the operation required\n");
+		printf("=====================================\n");
 		printf("1.push\n2.pop\n3.Display\n4.exit\n");
+		printf("=====================================\n");
 		fflush(stdin);
 		scanf("%d",&n);
 		switch(n){
@@ -55,7 +61,7 @@ int main(){
 				display(stack);
 				break;
 			case 4:
-				printf("\nTime complexity = %d",count);
+				printf("\n========Program terminated========");
 				exit(0);
 			default :
 				printf("Invalid selection");
