@@ -4,7 +4,7 @@ int main(){
 
    int n, temp, i, j, array[20],count=0;
 
-   printf("Enter array of elements(max 20)");
+   printf("Enter array size (max 20)");
    scanf("%d",&n);
 
    for(i=0;i<n;i++){
@@ -26,7 +26,7 @@ int main(){
     count++;
    }
 
-   printf("Sorted elements: ");
+   printf("Sorted array: ");
    for(i=0;i<n;i++){
       printf(" %d",array[i]);
     count++;
