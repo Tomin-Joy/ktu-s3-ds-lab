@@ -17,15 +17,12 @@ void enQueue(int q[],int item){
 	
 }
 void deQueue(int q[]){
-	if(front==-1){
+	if(front ==-1 || front>= MAX){
 		printf("The queue is empty\n");
 		return;
 	}
 	printf("The element deleted is %d\n",q[front]);
 	front++;
-	if(front==MAX){
-		front=rear=-1;
-	}
 }
 void display(int q[]){
 	printf("\n");
