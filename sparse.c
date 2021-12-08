@@ -20,7 +20,6 @@ int  sparse(int A[][10],int B[][10],int m,int n){
 				B[k][0] = i;
 				B[k][1] = j;
 				B[k][2] = A[i][j];
-				
 			}
 		}
 	}
