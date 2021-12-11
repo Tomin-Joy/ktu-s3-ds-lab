@@ -25,7 +25,9 @@ void deQueue(int q[]){
 	if(front==rear){
 		front=rear-1;
 	}
-	front=(front+1)%MAX;
+	else{
+		front=(front+1)%MAX;
+	}
 }
 void display(int q[]){
 	printf("\n");
@@ -67,7 +69,6 @@ int main(){
 		scanf("%d",&n);
 		switch(n){
 			case 1:
-				
 				printf("Enter the item to push : ");
 				int item;
 				scanf("%d",&item);
