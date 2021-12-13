@@ -1,6 +1,6 @@
 #include<stdio.h>
 int main(){
-    int exp[40],n,power;
+    int exp[40],n,power,flag = 0;
     printf("Enter the number of elements  : ");
     scanf("%d",&n);
     for(int i=0;i<40;i++)
@@ -17,8 +17,15 @@ int main(){
     		continue;
     	}
     	else{
-    	printf("%d(x^%d) + ",exp[i],i);
+    	if (flag==0){
+    		printf("%d(x^%d) ",exp[i],i);
+    		flag =1;
+    	}
+    	else{
+    	printf("+ %d(x^%d) ",exp[i],i);
     }
+    }
+    
 }
     return 0;
 }
