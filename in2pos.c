@@ -11,28 +11,19 @@ void push(char e)
  
 char pop()
 {                     
-    return(Q[top--]);
+    return Q[top--];
 }
  
 int pFinder(char symbol)
 {                
-    
-	if(symbol == '^')
-	{
-		return(3);
-	}
+    if(symbol == '^')
+		return 3 ;
 	else if(symbol == '*' || symbol == '/')
-	{
-		return(2);
-	}
+		return 2;
 	else if(symbol == '+' || symbol == '-')          
-	{
-		return(1);
-	}
+		return 1;
 	else
-	{
-		return(0);
-	}
+        return 0;
 }
  
 int main()
@@ -49,22 +40,22 @@ int main()
         	push(ch);
         }
         else if(isalnum(ch)) {
-            	postfix[k++]=ch;
+            postfix[k++]=ch;
+        }
+        else if( ch == ')')
+        {
+            while( Q[top] != '('){
+                postfix[k++]=pop();
             }
-            else if( ch == ')')
-                {
-                    while( Q[top] != '('){
-                        postfix[k++]=pop();
-                    }
-                    e=pop(); 
-                }
-                else
-                {       
-                    while( pFinder(Q[top]) >= pFinder(ch) ){
-                        postfix[k++]=pop();
-                    }
-                    push(ch);
-                }
+            e=pop(); 
+        }
+        else
+        {       
+            while( pFinder(Q[top]) >= pFinder(ch) ){
+                postfix[k++]=pop();
+            }
+            push(ch);
+        }
         ch = infix[i++];
     }
     while( Q[top] != '(') {    

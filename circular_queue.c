@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-#define MAX 5
+#define MAX 2
 int rear=-1;
 int front=-1;
 
@@ -23,7 +23,7 @@ void deQueue(int q[]){
 	}
 	printf("The element deleted is %d\n",q[front]);
 	if(front==rear){
-		front=rear-1;
+		front=rear=-1;
 	}
 	else{
 		front=(front+1)%MAX;

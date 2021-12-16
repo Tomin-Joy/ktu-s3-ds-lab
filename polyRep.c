@@ -15,7 +15,8 @@ int main(){
     	scanf("%d",&expression[i].expo);
         printf("Enter the coefficient of x^%d : ",expression[i].expo);
         scanf("%d",&expression[i].coef);
-    }for(int i=0;i<n;i++){
+    }
+	for(int i=0;i<n;i++){
 		int min=i;
 		for(int j=i+1;j<n;j++){
 			if(expression[min].expo>expression[j].expo){
