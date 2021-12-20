@@ -88,8 +88,20 @@ void deAtPos(int pos){
     while (i++ < pos - 1) {
         p = p->next;
     }
-    t = p->next;
-    p->next = t->next;
+    if(p==H){
+    	t = H;
+		H=H->next;
+		free(t);
+	}
+    else if(p->next->next==NULL){
+    	t=p->next;
+		p->next=NULL;
+		free(t);
+	}
+	else{
+		t = p->next;
+		p->next = t->next;
+	}
 }
 	
 int main(){
