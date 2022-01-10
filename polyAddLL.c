@@ -1,18 +1,18 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-typedef struct Node
+typedef struct node
 {
     int coef;
     int pow;
-    struct Node* nxt;
-}Node;
+    struct node* nxt;
+}node;
 
-Node* readPoly()
+node* readPoly()
 {
     int coef, exp, flag;
-    Node* temp = (Node*)malloc(sizeof(Node));
-    Node *p = temp;
+    node* temp = (node*)malloc(sizeof(node));
+    node *p = temp;
     do{ 
         printf("Exponent: ");
         scanf("%d", &exp);
@@ -25,7 +25,7 @@ Node* readPoly()
         scanf("%d", &flag);
         if(flag)
         {
-            temp->nxt = (Node*)malloc(sizeof(Node));
+            temp->nxt = (node*)malloc(sizeof(node));
             temp = temp->nxt;
             temp->nxt = NULL;
         }
@@ -34,7 +34,7 @@ Node* readPoly()
     return p;  
 }
 
-void dispPoly(Node* p)
+void dispPoly(node* p)
 {
     while(p != NULL)
     {
@@ -46,10 +46,10 @@ void dispPoly(Node* p)
     printf("\n");
 }
 
-Node* addPoly(Node* first, Node* second)
+node* addPoly(node* first, node* second)
 {   
-    Node* result = NULL;
-    Node* temp = (Node*)malloc(sizeof(Node));
+    node* result = NULL;
+    node* temp = (node*)malloc(sizeof(node));
     temp->nxt = NULL;
     result = temp;
     while(first && second)
@@ -76,14 +76,14 @@ Node* addPoly(Node* first, Node* second)
 
         if(first && second)
         {
-            temp->nxt = (Node*)malloc(sizeof(Node));
+            temp->nxt = (node*)malloc(sizeof(node));
             temp = temp->nxt;
             temp->nxt = NULL;
         }
     }
     while(first || second)
     {
-        temp->nxt = (Node*)malloc(sizeof(Node));
+        temp->nxt = (node*)malloc(sizeof(node));
         temp = temp->nxt;
         temp->nxt = NULL;
             
@@ -107,9 +107,9 @@ Node* addPoly(Node* first, Node* second)
 int main()
 {
 
-    Node* first = NULL;
-    Node* second = NULL;
-    Node* result = NULL;
+    node* first = NULL;
+    node* second = NULL;
+    node* result = NULL;
     printf("\nEnter Details of first polynomial :-\n");
     first = readPoly();
     printf("\nEnter Details of second polynomial :-\n");
