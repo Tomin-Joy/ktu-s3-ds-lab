@@ -1,10 +1,13 @@
-/* C program for Merge Sort */
-#include <stdio.h>
-#include <stdlib.h>
+/************************************************************************
+ * File         :   mergeSort.c
+ * Description  :   C Program to  implement merge sort algorothm
+ * Author       :   Tomin Joy
+ * Version      :   1.0
+ * Date         :   17/01/2022
+ ************************************************************************/
 
-// Merges two subarrays of arr[].
-// First subarray is arr[l..m]
-// Second subarray is arr[m+1..r]
+#include <stdio.h>
+
 void merge(int arr[], int left, int mid, int right)
 {
 	int i, j, k;
