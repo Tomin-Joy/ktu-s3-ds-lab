@@ -1,67 +1,70 @@
+/************************************************************************
+ * File         :   mergeSort.c
+ * Description  :   C Program to  represent  Binary tree using array
+ * Author       :   Tomin Joy
+ * Version      :   1.0
+ * Date         :   01/02/2022
+ ************************************************************************/
+
 #include <stdio.h>
-#include <stdlib.h>
-typedef struct node
-{
-    int data;
-    struct node *leftNode;
-    struct node *rightNode;
-}node;
-void inorder(node *rootNode)
-{
-    if (rootNode == NULL)
-        return;
-    inorder(rootNode->leftNode);
-    printf("%d ->", rootNode->data);
-    inorder(rootNode->rightNode);
+char tree[200];
+
+void parent(char val){
+    if (tree[0] != '\0'){
+        printf("Tree already has a root!");
+    }
+    else{
+        tree[0] = val;
+    }
 }
-void preorder(node *rootNode)
-{
-    if (rootNode == NULL)
-        return;
-    printf("%d ->", rootNode->data);
-    preorder(rootNode->leftNode);
-    preorder(rootNode->rightNode);
+
+void set_left(char key, int parent){
+    if (tree[parent] == '#'){
+        printf("\nCan't set child at %d no parent found! ", (parent * 2) + 1);
+    }
+    else{
+        tree[(parent * 2) + 1] = key;
+    }
 }
-void postorder(node *rootNode)
-{
-    if (rootNode == NULL)
-        return;
-    postorder(rootNode->leftNode);
-    postorder(rootNode->rightNode);
-    printf("%d ->", rootNode->data);
+
+void set_right(char key, int parent){
+    if (tree[parent] == '#'){
+        printf("\nCan't set child at %d no parent found !", (parent * 2) + 2);
+    }
+    else{
+        tree[(parent * 2) + 2] = key;
+    }
 }
-node* createNode(int value)
-{
-    node *newNode = malloc(sizeof(node));
-    newNode->data = value;
-    newNode->leftNode = NULL;
-    newNode->rightNode = NULL;
-    return newNode;
+
+void print_tree(int n){
+    int i;
+    printf("Total no of nodes = %d\n",n);
+    for (i = 0; i < n; i++){
+        if (tree[i] != '\0'){
+            printf("%c ", tree[i]);
+        }
+        else{
+            printf("_ ");
+        }
+    }
 }
-node *leftIn(node *rootNode, int value)
-{
-    rootNode->leftNode = createNode(value);
-    return rootNode->leftNode;
-}
-node *rightIn(node *rootNode, int value)
-{
-    rootNode->rightNode = createNode(value);
-    return rootNode->rightNode;
-}
-int main()
-{
-    node * rootNode = createNode(7);
-    leftIn(rootNode, 4);
-    rightIn(rootNode, 8);
-    leftIn(rootNode->leftNode, 1);
-    rightIn(rootNode->rightNode, 5);
-    leftIn(rootNode->leftNode, 6);
-    rightIn(rootNode->rightNode, 3);
-    printf("Inorder \n");
-    inorder(rootNode);
-    printf("\nPreorder \n");
-    preorder(rootNode);
-    printf("\nPostorder \n");
-    postorder(rootNode);
+
+int main(){
+    int n, i;
+    int index[100];
+    char root, right[100], left[100];
+    
+    n = 9;
+    parent('A');
+    set_left('B', 0);
+    set_right('\0', 0);
+    set_left('C', 1);
+    set_right('D', 1);
+    set_left('E', 2);
+    set_right('F', 2);
+    set_left('\0', 3);
+    set_right('G', 3);
+    printf("\nArray Representation of binary tree\n\n");
+    print_tree(n);
     return 0;
 }
