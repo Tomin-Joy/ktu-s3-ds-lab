@@ -10,7 +10,6 @@ typedef struct node{
 }node;
 
 node* H;
-int garbage = 0;
 
 node* create(){
     node* t = malloc(sizeof(node));
@@ -72,7 +71,7 @@ void display(){
 
 void garbageCollection(){
     node * p =H;
-    
+    int garbage = 0;
     if(p){
         while(p->next){
             if(p->value==INT_MIN){
@@ -110,7 +109,7 @@ int main(){
     int n,pos;
     while (1){
  		printf("\n\n============================");
-		printf("\n1.Display\n2.Insert\n3.Delete\n4.Exit");
+		printf("\n1.Display\n2.Insert\n3.Delete\n4.Collect Garbage\n5.Exit");
 		printf("\n============================");
 	    printf("\nEnter Choice : ");
 	    fflush(stdin);
@@ -131,6 +130,8 @@ int main(){
                 garbageCollection();
                 break;
             case 4:
+                garbageCollection();
+            case 5:
                 exit(0);
             default :
                 printf("Wrong option selected");
