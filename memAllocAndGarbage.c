@@ -88,21 +88,15 @@ void garbageCollection(){
 }
 
 void delete(){
-    int n;
-    printf("Enter the number of elements to delete : ");
-    scanf("%d",&n);
-    while(n--){
-        int pos;
-        printf("Enter the pos to delete : ");
-        scanf("%d",&pos);  
-        node* p = H;      
-        for(int i =2;i<=pos;i++){
-            p=p->next;
-        }
-        p->value=INT_MIN;
-        display();
-                
+    int pos;
+    printf("Enter the pos to delete : ");
+    scanf("%d",&pos);  
+    node* p = H;      
+    for(int i =2;i<=pos;i++){
+        p=p->next;
     }
+    p->value=INT_MIN;
+    display();
 }
 
 int main(){
@@ -127,10 +121,10 @@ int main(){
                 break;
             case 3:
                 delete();
-                garbageCollection();
                 break;
             case 4:
                 garbageCollection();
+                break;
             case 5:
                 exit(0);
             default :
