@@ -1,106 +1,157 @@
 #include <stdio.h>
-#include <stdbool.h>
-#include <stdlib.h>
 
-struct Node
+int q[20], top = -1, front = -1, rear = -1, a[20][20], vis[20], stack[20];
+int delete ();
+void add(int item);
+void bfs(int s, int n);
+void dfs(int s, int n);
+void push(int item);
+int pop();
+
+void main()
 {
-    int data;
-    struct Node *next;
-};
-
-struct Node *vertices[100], *temp, *head;
-const int qSize = 100;
-int q[100];
-int front = -1, rear = -1;
-
-void qPush(int);
-int qPop();
-bool qEmpty();
-void breadthFirstTraversal(int u)
-{
-    int visited[100] = {0}; // initilaze visited array to keep track of visited nodes
-
-    visited[u] = 1; // mark the starting node as visited
-    qPush(u);       // and push it into the queue
-
-    int curr_node;
-    while (!qEmpty())
-    {
-        curr_node = qPop();          // get a node from the front of the queue
-        printf("%d -> ", curr_node); // and print its value
-        temp = vertices[curr_node];
-        while (temp) // check the neighbouring nodes
-        {
-            if (!visited[temp->data]) // if there is an unvisited neighbouring node
-            {
-                visited[temp->data] = 1; // visit it
-                qPush(temp->data);       // and push into the queue
-            }
-            temp = temp->next;
-        }
-    }
-}
-
-int main()
-{
-    int n;
-    printf("Enter number of nodes\n");
+    int n, i, s, ch, j;
+    char c, dummy;
+    printf("ENTER THE NUMBER VERTICES ");
     scanf("%d", &n);
-    int i, c;
     for (i = 1; i <= n; i++)
     {
-        vertices[i] = (struct Node *)malloc(sizeof(struct Node));
-        vertices[i]->data = i;
-        vertices[i]->next = NULL;
-        head = vertices[i];
-        printf("Enter all adjacent nodes to vertex %d, enter 0 to go to next node\n", i);
-        do
+        for (j = 1; j <= n; j++)
         {
-            scanf("%d", &c);
-            if (c != 0)
-            {
-                temp = (struct Node *)malloc(sizeof(struct Node));
-                temp->data = c;
-                temp->next = NULL;
-                head->next = temp;
-                head = temp;
-            }
-
-        } while (c != 0);
+            printf("ENTER 1 IF %d HAS A NODE WITH %d ELSE 0 ", i, j);
+            scanf("%d", &a[i][j]);
+        }
+    }
+    printf("THE ADJACENCY MATRIX IS\n");
+    for (i = 1; i <= n; i++)
+    {
+        for (j = 1; j <= n; j++)
+        {
+            printf(" %d", a[i][j]);
+        }
+        printf("\n");
     }
 
-    int startNode;
-    printf("\nEnter the start vertex\n");
-    scanf("%d", &startNode);
-    printf("\nBreadth first traversal from node %d\n", startNode);
-    breadthFirstTraversal(startNode);
+    do
+    {
+        for (i = 1; i <= n; i++)
+            vis[i] = 0;
+        printf("\nMENU");
+        printf("\n1.B.F.S");
+        printf("\n2.D.F.S");
+        printf("\nENTER YOUR CHOICE");
+        scanf("%d", &ch);
+        printf("ENTER THE SOURCE VERTEX :");
+        scanf("%d", &s);
 
-    printf("\n");
-    return 0;
+        switch (ch)
+        {
+        case 1:
+            bfs(s, n);
+            break;
+        case 2:
+            dfs(s, n);
+            break;
+        }
+        printf("DO U WANT TO CONTINUE(Y/N) ? ");
+        scanf("%c", &dummy);
+        scanf("%c", &c);
+    } while ((c == 'y') || (c == 'Y'));
 }
 
-void qPush(int data)
+
+void bfs(int s, int n)
 {
-    if (rear == qSize - 1)
-        return;
-    if (front == -1)
-        ++front;
-    q[++rear] = data;
+    int p, i;
+    add(s);
+    vis[s] = 1;
+    p = delete ();
+    if (p != 0)
+        printf(" %d", p);
+    while (p != 0)
+    {
+        for (i = 1; i <= n; i++)
+            if ((a[p][i] != 0) && (vis[i] == 0))
+            {
+                add(i);
+                vis[i] = 1;
+            }
+        p = delete ();
+        if (p != 0)
+            printf(" %d ", p);
+    }
+    for (i = 1; i <= n; i++)
+        if (vis[i] == 0)
+            bfs(i, n);
 }
 
-int qPop()
+void add(int item)
 {
-    if (qEmpty())
-        return -1;
-    int deleted = q[front];
-    if (rear == front)
-        front = rear = -1;
+    if (rear == 19)
+        printf("QUEUE FULL");
     else
-        front++;
-    return deleted;
+    {
+        if (rear == -1)
+        {
+            q[++rear] = item;
+            front++;
+        }
+        else
+            q[++rear] = item;
+    }
+}
+int delete ()
+{
+    int k;
+    if ((front > rear) || (front == -1))
+        return (0);
+    else
+    {
+        k = q[front++];
+        return (k);
+    }
 }
 
-bool qEmpty()
+
+void dfs(int s, int n)
 {
-    return front == -1 && rear == -1;
+    int i, k;
+    push(s);
+    vis[s] = 1;
+    k = pop();
+    if (k != 0)
+        printf(" %d ", k);
+    while (k != 0)
+    {
+        for (i = 1; i <= n; i++)
+            if ((a[k][i] != 0) && (vis[i] == 0))
+            {
+                push(i);
+                vis[i] = 1;
+            }
+        k = pop();
+        if (k != 0)
+            printf(" %d ", k);
+    }
+    for (i = 1; i <= n; i++)
+        if (vis[i] == 0)
+            dfs(i, n);
+}
+void push(int item)
+{
+    if (top == 19)
+        printf("Stack overflow ");
+    else
+        stack[++top] = item;
+}
+int pop()
+{
+    int k;
+    if (top == -1)
+        return (0);
+    else
+    {
+        k = stack[top--];
+        return (k);
+    }
 }

@@ -6,65 +6,42 @@
  * Date         :   01/02/2022
  ************************************************************************/
 
-#include <stdio.h>
-char tree[200];
+#include<stdio.h>
+#include<math.h>
 
-void parent(char val){
-    if (tree[0] != '\0'){
-        printf("Tree already has a root!");
-    }
-    else{
-        tree[0] = val;
-    }
-}
-
-void set_left(char key, int parent){
-    if (tree[parent] == '#'){
-        printf("\nCan't set child at %d no parent found! ", (parent * 2) + 1);
-    }
-    else{
-        tree[(parent * 2) + 1] = key;
-    }
-}
-
-void set_right(char key, int parent){
-    if (tree[parent] == '#'){
-        printf("\nCan't set child at %d no parent found !", (parent * 2) + 2);
-    }
-    else{
-        tree[(parent * 2) + 2] = key;
-    }
-}
-
-void print_tree(int n){
-    int i;
-    printf("Total no of nodes = %d\n",n);
-    for (i = 0; i < n; i++){
-        if (tree[i] != '\0'){
-            printf("%c ", tree[i]);
+int main()
+{
+    int i,size,n,nodes;
+    char binaryTree[50];
+    printf("Enter the total height of the binary tree:");
+    scanf("%d",&n);
+    size=n+1;
+    printf("Enter the Root Element:");
+    fflush(stdin);
+    scanf("%c",&binaryTree[0]);
+    
+    nodes=pow(2,n)-1;
+    printf("\nEnter ""_"" to represent Free space\n");
+    for(i=0;i<nodes-1;i++)
+    {
+        if(binaryTree[i]!='_'){
+            printf("Enter the Left child of %c :",binaryTree[i]);
+            fflush(stdin);
+            scanf("%c",&binaryTree[(2*i)+1]);
+            printf("Enter the Right child of %c :",binaryTree[i]);
+            fflush(stdin);
+            scanf("%c",&binaryTree[(2*i)+2]);
         }
         else{
-            printf("_ ");
+            binaryTree[(2*i)+1]='_';
+            binaryTree[(2*i)+2]='_';
+
         }
     }
-}
-
-int main(){
-    int n, i;
-    int index[100];
-    char root, right[100], left[100];
-    
-    n = 9;
-    parent('A');
-    set_left('B', 0);
-    set_right('\0', 0);
-    set_left('C', 1);
-    set_right('D', 1);
-    set_left('E', 2);
-    set_right('F', 2);
-    set_left('\0', 3);
-    set_right('G', 3);
-    printf("\nArray Representation of binary tree\n\n");
-    print_tree(n);
+    printf("The binary tree using array representation( ""_"" represents Empty Space)=\n");
+    for(i=0;i<nodes;i++)
+    {
+        printf("%c\t",binaryTree[i]);
+    }
     return 0;
 }
