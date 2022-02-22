@@ -8,9 +8,6 @@ typedef struct node{
     int size;
     struct node* next;
 }node;
-
-
-
 node* create(){
     node* t = malloc(sizeof(node));
     printf("Enter the value : ");
@@ -21,7 +18,6 @@ node* create(){
     t->prev=NULL;
     return t;
 }
-
 node* insert(node* t,node* H){ // inserting at front
     if(H==NULL){
         H=t;
@@ -55,7 +51,6 @@ node* insertGarbage(int p,node* H){ // inserting garbage
     }
     return H;
 }
-
 void display(node * H){
     printf("\nThe current list is         : ");
     node* p = H;
@@ -88,7 +83,6 @@ void display(node * H){
     }
     printf("\n");
 }
-
 void displayGarbage(node * HG){
     printf("\nThe garbage values is : ");
     node* p = HG;
@@ -101,8 +95,6 @@ void displayGarbage(node * HG){
     }
 
 }
-
-
 node* delete(node* H,node* HG){
     int pos;
     printf("Enter the pos to delete : ");
