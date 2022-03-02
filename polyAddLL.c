@@ -106,7 +106,6 @@ node* addPoly(node* first, node* second)
 
 int main()
 {
-
     node* first = NULL;
     node* second = NULL;
     node* result = NULL;

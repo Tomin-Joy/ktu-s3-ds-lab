@@ -13,7 +13,7 @@ int main()
 {
     int i,size,n,nodes;
     char btarray[50];
-    printf("Enter the total height of the binary tree:");
+    printf("Enter the depth of the binary tree:");
     scanf("%d",&n);
     size=n+1;
     printf("Enter the Root Element:");
@@ -43,7 +43,7 @@ int main()
     nodes=pow(2,size)-1;
     for(i=0;i<nodes;i++)
     {
-        printf("%c\t",btarray[i]);
+        printf("%c  ",btarray[i]);
     }
     return 0;
 }

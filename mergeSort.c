@@ -13,14 +13,11 @@ void merge(int arr[], int left, int mid, int right)
 	int i, j, k;
 	int n1 = mid - left + 1;
 	int n2 = right - mid;
-
 	int L[n1], R[n2];
-
 	for (i = 0; i < n1; i++)
 		L[i] = arr[left + i];
 	for (j = 0; j < n2; j++)
 		R[j] = arr[mid + 1 + j];
-
 	i = 0; 
 	j = 0;
 	k = left; 
@@ -49,13 +46,9 @@ void merge(int arr[], int left, int mid, int right)
 void mergeSort(int arr[], int left, int right)
 {
 	if (left < right) {
-	
 		int mid = (left + right ) / 2;
-
-	
 		mergeSort(arr, left, mid);
 		mergeSort(arr, mid + 1, right);
-
 		merge(arr, left, mid, right);
 	}
 }
@@ -67,7 +60,6 @@ void printArray(int A[], int size)
 		printf("%d ", A[i]);
 	printf("\n");
 }
-
 
 void main(){
     int a[20],size;

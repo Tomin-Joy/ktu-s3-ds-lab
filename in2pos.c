@@ -1,21 +1,17 @@
 #include <stdio.h>
 #include <ctype.h>           
-
 char Q[20];
 int top=-1;       
  
-void push(char e)
-{                       
+void push(char e){                       
     Q[++top]=e;
 }
  
-char pop()
-{                     
+char pop(){                     
     return Q[top--];
 }
  
-int pFinder(char symbol)
-{                
+int pFinder(char symbol){                
     if(symbol == '^')
 		return 3 ;
 	else if(symbol == '*' || symbol == '/')

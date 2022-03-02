@@ -107,10 +107,10 @@ void deAtPos(int pos){
 int main(){
 	int n,pos;
     while (1){
- 		printf("\n\n============================");
-		printf("\n1.Display\n\n2.Insert at Front\n3.Insert at end\n4.Insert at particular position\n");
-		printf("\n5.Delete at Front\n6.Delete at end\n7.Delete at particular position\n");
-		printf("\n8.Exit\n");
+ 		printf("\n\n============================\n");
+		printf("1.Display\n2.Insert at Front\n3.Insert at end\n4.Insert at particular position\n");
+		printf("5.Delete at Front\n6.Delete at end\n7.Delete at particular position\n");
+		printf("8.Exit\n");
 		printf("============================");
 	    printf("\nEnter Choice : ");
 	    fflush(stdin);

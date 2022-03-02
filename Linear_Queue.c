@@ -44,7 +44,7 @@ int main(){
 	while(1){
 		printf("Enter the operation required\n");
 		printf("=====================================\n");
-		printf("1.push\n2.pop\n3.Display\n4.exit\n");
+		printf("1.enque\n2.deque\n3.Display\n4.exit\n");
 		printf("=====================================\n");
 		fflush(stdin);
 		scanf("%d",&n);
