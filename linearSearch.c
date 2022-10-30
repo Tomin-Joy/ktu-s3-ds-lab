@@ -1,3 +1,5 @@
+//Program to implement Linear Search
+
 #include<stdio.h>
 int main(){
 	int i,s,n,array[10],flag=0,count=1;
