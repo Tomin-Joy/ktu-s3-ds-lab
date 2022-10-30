@@ -41,5 +41,5 @@ int main(){
 }
 			
 		
-	
+	// c prgrm to do binary search and print time complexity
 	
