@@ -10,6 +10,7 @@ void add(int item){
             q[++rear] = item;
             front++;
         }
+            
         else
             q[++rear] = item;
     }
