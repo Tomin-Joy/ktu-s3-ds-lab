@@ -4,6 +4,7 @@
 int rear=-1;
 int front=-1;
 
+
 void enQueue(int q[],int item){
 	if(rear==MAX-1){
 		printf("The queue is full\n");
@@ -50,7 +51,6 @@ int main(){
 		scanf("%d",&n);
 		switch(n){
 			case 1:
-				
 				printf("Enter the item to push : ");
 				int item;
 				scanf("%d",&item);
