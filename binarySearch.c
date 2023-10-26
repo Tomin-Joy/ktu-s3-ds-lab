@@ -32,7 +32,6 @@ int main(){
 		}
 	count++;
 	}
-	
 	if(pos==-1){
 		printf("Element not found\n");
 	}
